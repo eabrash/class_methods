@@ -35,6 +35,19 @@
 ## ATTRIBUTES
 
 
+class User
+
+  def initialize
+    @name     # Ok to initialize without value, just list the name
+  end
+
+  def add_username(name)
+    @name = name        # Add the actual name later
+  end
+
+end
+
+
 # class Order
 #   def initialize(subtotal, quantity) # <= instance method
 #     @subtotal = subtotal
@@ -70,42 +83,54 @@
 ######    LETS TRY IT OUT!    #####
 ###################################
 
+class Kitten
 
-# class Pawn
-#   attr_reader :position
-#   def initialize(position)
-#     @position = position
-#   end
-#
+  def self.say_meow
+    return "meow"
+  end
+
+end
+
+puts Kitten.say_meow
+
+class Pawn
+  attr_reader :position
+  def initialize(position)
+    @position = position
+  end
+
 #   # This is the class method, it starts with self.
 #   # It is only called on the class directly Pawn.make_row
-#   def self.make_row(side)
-#     if side == "white"
-#       num = 2
-#     else
-#       num = 7
-#     end
-#
-#     pawns = []
-#     ("a".."h").each do |letter|
-#       pawns << self.new("#{letter}#{num}")
-#     end
-#
-#     pawns
-#   end
-# end
-#
-# #make one pawn
-# one_pawn = Pawn.new("A2")
+
+  def self.make_row(side)
+    if side == "white"
+      num = 2
+    else
+      num = 7
+    end
+
+    pawns = []
+    ("a".."h").each do |letter|
+      pawns << self.new("#{letter}#{num}")
+    end
+
+    pawns
+  end
+end
+
+# make one pawn
+one_pawn = Pawn.new("A2")
 #
 # #make a whole row of pawns
-# pawns = Pawn.make_row("black")
+pawns = Pawn.make_row("black")
 #
-# #What is being stored in this local variable pawns?
-# print pawns
+# What is being stored in this local variable pawns?
+print pawns
+
+puts "\n"
 #
 # #WHAT IS THIS DOING!?
-# puts pawns.shuffle.first.position
+puts pawns.shuffle.first.position
 
 
 
@@ -116,7 +141,7 @@
 
 
 #In Gems, like faker
-  # https://github.com/stympy/faker/blob/master/lib/faker/hacker.rb
+#  https://github.com/stympy/faker/blob/master/lib/faker/hacker.rb
 
 #When we get into databases, our data will be tied to a class. That class will have some premade class methods for us to use:  .find, .last, .where
 #Those class methods allow you to find specific objects of that class based on an specified attributes of that class.
